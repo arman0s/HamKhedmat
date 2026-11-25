@@ -1,0 +1,20 @@
+{
+  "name": "هم‌خدمت | همراه دوران خدمت",
+  "short_name": "هم‌خدمت",
+  "description": "روزشمار و همراه دیجیتال دوران خدمت",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fc",
+  "theme_color": "#101d3a",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

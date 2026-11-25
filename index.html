@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101d3a">
+  <meta name="description" content="هم‌خدمت؛ همراه دیجیتال دوران خدمت">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>هم‌خدمت | همراه دوران خدمت</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" data-page="home">
+        <span class="brand-mark">هـ</span>
+        <span><b>هم‌خدمت</b><small>همراه دوران خدمت</small></span>
+      </a>
+      <div class="side-label">منوی اصلی</div>
+      <nav class="side-nav" aria-label="منوی اصلی">
+        <button class="nav-link active" data-page="home"><span>⌂</span> خانه</button>
+        <button class="nav-link" data-page="countdown"><span>◷</span> روزشمار</button>
+        <button class="nav-link" data-page="community"><span>◎</span> انجمن</button>
+        <button class="nav-link" data-page="market"><span>▤</span> بازارچه</button>
+        <button class="nav-link" data-page="chat"><span>◌</span> گفت‌وگوها</button>
+        <button class="nav-link" data-page="calendar"><span>▦</span> تقویم و خاطرات</button>
+        <button class="nav-link" data-page="fun"><span>✧</span> سرگرمی</button>
+        <button class="nav-link" data-page="news"><span>▧</span> اخبار و آموزش</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="offline-pill"><i></i> نسخه آزمایشی روی دستگاه</div>
+        <button class="nav-link" data-page="profile"><span>♙</span> پروفایل و تنظیمات</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-brand" data-page="home"><span class="brand-mark">هـ</span><b>هم‌خدمت</b></button>
+        <div class="breadcrumb"><span>هم‌خدمت</span><b>/</b><strong id="page-title">داشبورد</strong></div>
+        <div class="top-actions">
+          <span class="today" id="today-label"></span>
+          <button class="icon-btn" aria-label="اعلان‌ها" title="اعلان‌ها">♧</button>
+          <button class="avatar" data-page="profile" aria-label="پروفایل">س</button>
+        </div>
+      </header>
+
+      <section class="page active" id="page-home">
+        <div class="welcome-row">
+          <div><p class="eyebrow">داشبورد شخصی شما</p><h1>خوش اومدی به هم‌خدمت <span>✦</span></h1><p class="muted">قدم‌به‌قدم تا روز پایان؛ اینجا همراهت هستیم.</p></div>
+          <button class="primary-btn" data-page="countdown">تنظیم روزشمار <b>←</b></button>
+        </div>
+        <div class="hero-card">
+          <div class="hero-copy">
+            <span class="tag"><i></i> روزشمار خدمت</span>
+            <h2 id="hero-days">هنوز روزشماری تنظیم نشده</h2>
+            <p id="hero-subtitle">تاریخ شروع و مدت خدمتت رو وارد کن تا شمارش معکوس ساخته بشه.</p>
+            <button class="light-btn" data-page="countdown">مدیریت روزشمار <span>←</span></button>
+          </div>
+          <div class="progress-ring" id="hero-ring">
+            <div><strong id="hero-percent">۰٪</strong><small>پیشرفت خدمت</small></div>
+          </div>
+          <div class="hero-decoration"></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon blue">◷</span><small>روزهای سپری‌شده</small><strong id="elapsed-stat">—</strong><em>از شروع خدمت</em></article>
+          <article class="stat-card"><span class="stat-icon cyan">⌛</span><small>روزهای باقی‌مانده</small><strong id="remaining-stat">—</strong><em>تا پایان تخمینی</em></article>
+          <article class="stat-card"><span class="stat-icon violet">▦</span><small>تاریخ پایان تخمینی</small><strong class="date-stat" id="end-stat">—</strong><em>قابل ویرایش در روزشمار</em></article>
+          <article class="stat-card"><span class="stat-icon green">✧</span><small>یادداشت‌های من</small><strong id="notes-stat">۰</strong><em>ثبت‌شده روی این دستگاه</em></article>
+        </div>
+        <div class="content-grid">
+          <section class="panel">
+            <div class="panel-heading"><div><h3>دسترسی سریع</h3><p>بخش‌های پرکاربرد هم‌خدمت</p></div><span class="subtle-link">همه امکانات</span></div>
+            <div class="quick-grid">
+              <button class="quick-item" data-page="community"><span class="quick-icon q-blue">◎</span><b>انجمن</b><small>گفت‌وگو و تجربه‌ها</small></button>
+              <button class="quick-item" data-page="market"><span class="quick-icon q-orange">▤</span><b>بازارچه</b><small>آگهی‌های کاربران</small></button>
+              <button class="quick-item" data-page="chat"><span class="quick-icon q-green">◌</span><b>گفت‌وگوها</b><small>ارتباط با دیگران</small></button>
+              <button class="quick-item" data-page="calendar"><span class="quick-icon q-purple">▦</span><b>خاطرات</b><small>ثبت روزهای مهم</small></button>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-heading"><div><h3>یادداشت سریع</h3><p>چیزی هست که بخوای ثبت کنی؟</p></div><span class="note-symbol">✎</span></div>
+            <textarea id="quick-note" class="note-input" placeholder="یادداشت امروزت رو اینجا بنویس..."></textarea>
+            <div class="note-footer"><span id="note-feedback">یادداشت فقط روی همین دستگاه ذخیره می‌شود.</span><button class="primary-btn small" id="save-note">ذخیره یادداشت</button></div>
+          </section>
+        </div>
+        <div class="notice"><span>ⓘ</span><p>اطلاعات روزشمار تخمینی است و جایگزین استعلام رسمی از مراجع مربوط نیست.</p></div>
+      </section>
+
+      <section class="page" id="page-countdown">
+        <div class="page-heading"><div><p class="eyebrow">مدیریت زمان خدمت</p><h1>روزشمار من</h1><p class="muted">اطلاعاتت رو وارد کن تا روزشمار شخصی‌ات محاسبه بشه.</p></div></div>
+        <div class="two-col">
+          <section class="panel form-panel">
+            <h3>تنظیمات روزشمار</h3>
+            <label>تاریخ شروع خدمت <input type="date" id="start-date"></label>
+            <label>مدت خدمت (ماه) <input type="number" id="duration" min="1" max="60" placeholder="مثلاً ۲۱"></label>
+            <label>عنوان روزشمار <input type="text" id="countdown-name" maxlength="40" placeholder="مثلاً روزشمار من"></label>
+            <button class="primary-btn full" id="calculate">محاسبه و ذخیره روزشمار</button>
+            <p class="form-hint">مدت خدمت و تاریخ پایان ممکن است با توجه به شرایط فردی و مقررات تغییر کند. نتیجه صرفاً تخمینی است.</p>
+          </section>
+          <section class="panel countdown-preview">
+            <span class="tag"><i></i> پیش‌نمایش</span>
+            <div class="big-number" id="countdown-number">—</div>
+            <h3>روز باقی‌مانده</h3>
+            <div class="bar"><span id="countdown-bar"></span></div>
+            <div class="preview-meta"><span>پیشرفت <b id="countdown-progress">۰٪</b></span><span>پایان تخمینی <b id="countdown-end">—</b></span></div>
+            <button class="outline-btn" id="reset-countdown">پاک کردن اطلاعات روزشمار</button>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-community">
+        <div class="page-heading"><div><p class="eyebrow">جامعه هم‌خدمت</p><h1>انجمن کاربران</h1><p class="muted">پرسش‌ها، تجربه‌ها و گفت‌وگوهای عمومی.</p></div><button class="primary-btn" id="new-post">＋ ایجاد پست</button></div>
+        <div class="notice"><span>ⓘ</span><p>این نسخه نمایشی است؛ انتشار عمومی پست و تعامل بین کاربران پس از راه‌اندازی سرور فعال می‌شود.</p></div>
+        <div id="post-list" class="feed-list">
+          <article class="feed-card"><div class="feed-top"><span class="avatar">م</span><div><b>مدیر هم‌خدمت</b><small>راهنمای جامعه · نمونه</small></div><span class="feed-category">اطلاعیه</span></div><h3>به جامعه هم‌خدمت خوش آمدید</h3><p>اینجا می‌تونیم تجربه‌ها و پرسش‌های عمومی رو با رعایت احترام و حریم خصوصی به اشتراک بذاریم.</p><div class="feed-actions"><span>♡ پسندیدن</span><span>◌ دیدگاه</span><span>⚑ گزارش</span></div></article>
+          <article class="feed-card"><div class="feed-top"><span class="avatar alt">ر</span><div><b>راهنمای هم‌خدمت</b><small>نکته کاربردی · نمونه</small></div><span class="feed-category">راهنما</span></div><h3>چطور از روزشمار بهتر استفاده کنیم؟</h3><p>تاریخ شروع و مدت خدمت رو با اطلاعات معتبر وارد کن و در صورت تغییر شرایط، محاسبات رو به‌روزرسانی کن.</p><div class="feed-actions"><span>♡ پسندیدن</span><span>◌ دیدگاه</span><span>⚑ گزارش</span></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-market">
+        <div class="page-heading"><div><p class="eyebrow">خرید، فروش و خدمات</p><h1>بازارچه هم‌خدمت</h1><p class="muted">آگهی‌های مرتبط و فرصت‌های کاربردی.</p></div><button class="primary-btn" id="new-ad">＋ ثبت آگهی</button></div>
+        <div class="notice"><span>ⓘ</span><p>آگهی‌ها در این نسخه فقط نمونه هستند. برای انتشار و پیام‌رسانی واقعی، حساب کاربری و بررسی آگهی لازم است.</p></div>
+        <div class="filter-row"><input id="market-search" placeholder="جست‌وجو در آگهی‌ها..."><select id="market-filter"><option value="all">همه دسته‌ها</option><option>کتاب و آموزش</option><option>وسایل</option><option>خدمات</option><option>کاریابی</option></select></div>
+        <div id="market-list" class="market-grid">
+          <article class="market-card"><div class="market-art art-blue">▤</div><div class="market-body"><span class="feed-category">کتاب و آموزش</span><h3>کتاب‌های آموزشی و عمومی</h3><p>نمونه آگهی برای نمایش چیدمان بازارچه</p><small>آگهی نمونه</small></div></article>
+          <article class="market-card"><div class="market-art art-violet">✧</div><div class="market-body"><span class="feed-category">خدمات</span><h3>آموزش مهارت‌های دیجیتال</h3><p>معرفی دوره‌ها و مهارت‌های کاربردی</p><small>آگهی نمونه</small></div></article>
+          <article class="market-card"><div class="market-art art-green">⌘</div><div class="market-body"><span class="feed-category">کاریابی</span><h3>فرصت‌های شغلی پس از خدمت</h3><p>اطلاع‌رسانی فرصت‌های شغلی معتبر</p><small>آگهی نمونه</small></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-chat">
+        <div class="page-heading"><div><p class="eyebrow">ارتباط با جامعه</p><h1>گفت‌وگوها</h1><p class="muted">فضای پیام‌رسانی خصوصی و گروهی.</p></div></div>
+        <div class="empty-state panel"><div class="empty-icon">◌</div><h3>گفت‌وگوی آنلاین به‌زودی</h3><p>برای فعال شدن چت واقعی، باید سامانه حساب کاربری، سرور پیام‌رسانی و ذخیره امن پیام‌ها راه‌اندازی شود.</p><button class="outline-btn" data-page="community">رفتن به انجمن</button></div>
+      </section>
+
+      <section class="page" id="page-calendar">
+        <div class="page-heading"><div><p class="eyebrow">برنامه‌ریزی شخصی</p><h1>تقویم و خاطرات</h1><p class="muted">یادداشت‌ها و اتفاقات مهمت رو ثبت کن.</p></div></div>
+        <div class="panel form-panel"><h3>ثبت خاطره یا یادداشت</h3><label>عنوان <input id="memory-title" placeholder="عنوان یادداشت"></label><label>تاریخ <input id="memory-date" type="date"></label><label>متن یادداشت <textarea id="memory-text" class="note-input" placeholder="متن خاطره یا یادداشت..."></textarea></label><button class="primary-btn" id="save-memory">ذخیره روی دستگاه</button><div id="memory-list" class="memory-list"></div></div>
+      </section>
+
+      <section class="page" id="page-fun">
+        <div class="page-heading"><div><p class="eyebrow">کمی تنوع</p><h1>سرگرمی</h1><p class="muted">بخش سبک و دوستانه هم‌خدمت.</p></div></div>
+        <div class="feature-grid"><article class="feature-card"><span>✧</span><h3>سؤال روز</h3><p>اگر یک مهارت رو می‌تونستی در این دوران یاد بگیری، چی انتخاب می‌کردی؟</p><button class="outline-btn" id="poll-vote">ثبت پاسخ من</button></article><article class="feature-card"><span>▦</span><h3>چالش اطلاعات عمومی</h3><p>یک بخش کوتاه برای پرسش‌های عمومی و سرگرمی.</p><button class="outline-btn" id="quiz-start">شروع نمونه آزمون</button></article></div>
+      </section>
+
+      <section class="page" id="page-news">
+        <div class="page-heading"><div><p class="eyebrow">دانش و آگاهی</p><h1>اخبار و آموزش</h1><p class="muted">راهنماها و اطلاعات عمومی با منبع و تاریخ انتشار.</p></div></div>
+        <div class="notice"><span>ⓘ</span><p>در نسخه نهایی، مطالب باید منبع معتبر و تاریخ به‌روزرسانی داشته باشند. این بخش فعلاً محتوای نمونه دارد.</p></div>
+        <div class="feed-list"><article class="feed-card"><span class="feed-category">راهنمای عمومی</span><h3>چک‌لیست برنامه‌ریزی شخصی</h3><p>هدف‌های کوتاه‌مدت مشخص کن، یادداشت‌ها رو مرتب نگه دار و اطلاعات مهم رو از منابع رسمی بررسی کن.</p></article><article class="feed-card"><span class="feed-category">مهارت‌آموزی</span><h3>یادگیری مهارت در زمان آزاد</h3><p>برای یادگیری، یک برنامه واقع‌بینانه و قابل پیگیری تنظیم کن.</p></article></div>
+      </section>
+
+      <section class="page" id="page-profile">
+        <div class="page-heading"><div><p class="eyebrow">حساب و تنظیمات</p><h1>پروفایل من</h1><p class="muted">نسخه آزمایشی بدون ثبت‌نام و حساب آنلاین.</p></div></div>
+        <div class="panel profile-panel"><span class="profile-avatar">س</span><h2>کاربر هم‌خدمت</h2><p class="muted">مهمان · اطلاعات این نسخه روی همین دستگاه نگهداری می‌شود.</p><div class="notice"><span>ⓘ</span><p>برای فعال‌سازی پروفایل عمومی، دوستان، چت و همگام‌سازی بین دستگاه‌ها، ثبت‌نام و بک‌اند لازم است.</p></div><button class="outline-btn" id="clear-local">پاک کردن داده‌های ذخیره‌شده این دستگاه</button></div>
+      </section>
+
+      <footer class="footer">هم‌خدمت <span>·</span> نسخه اولیه آزمایشی <span>·</span> اطلاعات روزشمار تخمینی است</footer>
+    </main>
+  </div>
+  <nav class="mobile-nav" aria-label="منوی موبایل">
+    <button class="active" data-page="home"><span>⌂</span><small>خانه</small></button>
+    <button data-page="countdown"><span>◷</span><small>روزشمار</small></button>
+    <button data-page="community"><span>◎</span><small>انجمن</small></button>
+    <button data-page="market"><span>▤</span><small>بازارچه</small></button>
+    <button data-page="profile"><span>♙</span><small>پروفایل</small></button>
+  </nav>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
