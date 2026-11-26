@@ -21,8 +21,37 @@ function updateCountdown(){
  $('#elapsed-stat').textContent=days===null?'—':fa(elapsed);$('#remaining-stat').textContent=days===null?'—':fa(days);$('#end-stat').textContent=end?fmtDate(end):'—';
  $('#countdown-number').textContent=days===null?'—':fa(days);$('#countdown-progress').textContent=fa(Math.round(pct))+'٪';$('#countdown-end').textContent=end?fmtDate(end):'—';$('#countdown-bar').style.width=pct+'%';if($('#remaining-detail'))$('#remaining-detail').textContent=days===null?'پس از تنظیم روزشمار، جزئیات زمان باقی‌مانده اینجا نمایش داده می‌شود.':days===0?'بازه تخمینی خدمت به پایان رسیده است.':`تقریباً ${fa(Math.floor(days/30))} ماه و ${fa(days%30)} روز باقی مانده است.`;
  if($('#total-days'))$('#total-days').textContent=days===null?'—':fa(total)+' روز';if($('#elapsed-days'))$('#elapsed-days').textContent=days===null?'—':fa(elapsed)+' روز';
- if(c){$('#start-date').value=c.start;$('#duration').value=c.duration;$('#countdown-name').value=c.name||'روزشمار من'}
+ if(c){$('#start-date').value=c.start;$('#duration').value=c.duration;$('#countdown-name').value=c.name||'روزشمار من';if($('#start-date-display'))$('#start-date-display').textContent=fmtJalaliISO(c.start)}
 }
+function fmtJalaliISO(iso){if(!iso)return 'انتخاب تاریخ شمسی';const [y,m,d]=iso.split('-').map(Number);const j=g2j(y,m,d);return `${fa(j.jd)} ${jMonths[j.jm-1]} ${fa(j.jy)}`;}
+let startPickerState={...g2j(new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate())};
+function renderStartPicker(){
+ const root=$('#start-date-grid');if(!root)return;
+ const {jy, jm}=startPickerState, first=j2g(jy,jm,1), offset=(first.getDay()+1)%7, count=jalaliMonthLength(jy,jm);
+ $('#start-month-title').textContent=`${jMonths[jm-1]} ${fa(jy)}`;
+ const today=g2j(new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate());
+ let html=['ش','ی','د','س','چ','پ','ج'].map(x=>`<span class="jalali-weekday">${x}</span>`).join('');
+ for(let i=0;i<offset;i++)html+='<span class="jalali-empty"></span>';
+ for(let day=1;day<=count;day++){
+  const future=jy>today.jy||(jy===today.jy&&(jm>today.jm||(jm===today.jm&&day>today.jd)));
+  const selected=$('#start-date').value===(()=>{const d=j2g(jy,jm,day);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`})();
+  html+=`<button type="button" class="jalali-day ${selected?'selected':''}" data-start-day="${day}" ${future?'disabled':''}>${fa(day)}</button>`;
+ }
+ root.innerHTML=html;
+ root.querySelectorAll('[data-start-day]').forEach(btn=>btn.addEventListener('click',()=>{
+  const d=j2g(jy,jm,Number(btn.dataset.startDay));
+  const iso=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  $('#start-date').value=iso;$('#start-date-display').textContent=fmtJalaliISO(iso);closeStartPicker();
+ }));
+}
+function openStartPicker(){const saved=$('#start-date').value;if(saved){const [y,m,d]=saved.split('-').map(Number);startPickerState=g2j(y,m,d)}else startPickerState={...g2j(new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate())};$('#start-date-picker').hidden=false;$('#start-date-display').setAttribute('aria-expanded','true');renderStartPicker()}
+function closeStartPicker(){$('#start-date-picker').hidden=true;$('#start-date-display').setAttribute('aria-expanded','false')}
+$('#start-date-display').addEventListener('click',openStartPicker);
+$('#start-month-prev').addEventListener('click',()=>{startPickerState.jm--;if(startPickerState.jm<1){startPickerState.jm=12;startPickerState.jy--}renderStartPicker()});
+$('#start-month-next').addEventListener('click',()=>{const t=g2j(new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate());if(startPickerState.jy<t.jy||(startPickerState.jy===t.jy&&startPickerState.jm<t.jm)){startPickerState.jm++;if(startPickerState.jm>12){startPickerState.jm=1;startPickerState.jy++}}renderStartPicker()});
+$('#start-date-today').addEventListener('click',()=>{const d=new Date(),iso=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;$('#start-date').value=iso;$('#start-date-display').textContent=fmtJalaliISO(iso);closeStartPicker()});
+$('#start-date-close').addEventListener('click',closeStartPicker);
+document.addEventListener('click',e=>{const box=$('#start-date-picker');if(box&&!box.hidden&&!e.target.closest('.date-picker-field'))closeStartPicker()});
 $('#calculate').addEventListener('click',()=>{const start=$('#start-date').value,duration=Number($('#duration').value);if(!start||!duration||duration<1||duration>60){toast('تاریخ شروع و مدت معتبر وارد کن.');return}if(new Date(start+'T00:00:00')>new Date()){toast('تاریخ شروع نمی‌تواند در آینده باشد.');return}put('countdown',{start,duration,name:$('#countdown-name').value.trim()||'روزشمار من'});updateCountdown();toast('روزشمار روی همین دستگاه ذخیره شد.')});
 $('#reset-countdown').addEventListener('click',()=>{if(!confirm('اطلاعات روزشمار پاک شود؟'))return;localStorage.removeItem('hk-countdown');$('#start-date').value='';$('#duration').value='';$('#countdown-name').value='';updateCountdown();toast('روزشمار پاک شد.')});
 // Jalali calendar conversion (breaks down Gregorian dates using Intl calendar arithmetic).

@@ -94,7 +94,7 @@
         <div class="two-col">
           <section class="panel form-panel">
             <h3>تنظیمات روزشمار</h3>
-            <label>تاریخ شروع خدمت <input type="date" id="start-date"></label>
+            <div class="date-picker-field"><label for="start-date-display">تاریخ شروع خدمت</label><input type="hidden" id="start-date"><button type="button" class="date-picker-trigger" id="start-date-display" aria-haspopup="dialog" aria-expanded="false">انتخاب تاریخ شمسی</button><div class="jalali-picker" id="start-date-picker" role="dialog" aria-label="انتخاب تاریخ شروع خدمت" hidden><div class="jalali-picker-head"><button type="button" id="start-month-prev" aria-label="ماه قبل">‹</button><strong id="start-month-title"></strong><button type="button" id="start-month-next" aria-label="ماه بعد">›</button></div><div class="jalali-picker-grid" id="start-date-grid"></div><div class="jalali-picker-foot"><button type="button" id="start-date-today">امروز</button><button type="button" id="start-date-close">بستن</button></div></div></div>
             <label>مدت خدمت (ماه) <input type="number" id="duration" min="1" max="60" placeholder="مثلاً ۲۱"></label>
             <label>عنوان روزشمار <input type="text" id="countdown-name" maxlength="40" placeholder="مثلاً روزشمار من"></label>
             <div class="countdown-extra"><span>کل بازه تخمینی: <b id="total-days">—</b></span><span>روز سپری‌شده: <b id="elapsed-days">—</b></span></div>
