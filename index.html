@@ -31,7 +31,7 @@
       </nav>
       <div class="sidebar-bottom">
         <div class="offline-pill"><i></i> نسخه آزمایشی روی دستگاه</div>
-        <button class="nav-link" data-page="profile"><span>♙</span> پروفایل و تنظیمات</button>
+        <button class="nav-link" data-page="profile"><span>♙</span> پروفایل</button><button class="nav-link" data-page="settings"><span>⚙</span> تنظیمات</button>
       </div>
     </aside>
 
@@ -40,9 +40,9 @@
         <button class="mobile-brand" data-page="home"><span class="brand-mark">هـ</span><b>هم‌خدمت</b></button>
         <div class="breadcrumb"><span>هم‌خدمت</span><b>/</b><strong id="page-title">داشبورد</strong></div>
         <div class="top-actions">
-          <span class="today" id="today-label"></span>
+          <span class="today" id="today-label"></span><span class="clock-chip" id="clock-label" aria-live="off"></span>
           <button class="icon-btn" aria-label="اعلان‌ها" title="اعلان‌ها">♧</button>
-          <button class="avatar" data-page="profile" aria-label="پروفایل">س</button>
+          <button class="icon-btn" data-page="settings" aria-label="تنظیمات" title="تنظیمات">⚙</button><button class="avatar" data-page="profile" aria-label="پروفایل">س</button>
         </div>
       </header>
 
@@ -146,7 +146,7 @@
       <section class="page" id="page-calendar">
         <div class="page-heading"><div><p class="eyebrow">برنامه‌ریزی شخصی</p><h1>تقویم شمسی و خاطرات</h1><p class="muted">ماه‌ها و روزها بر پایه تقویم هجری شمسی نمایش داده می‌شوند.</p></div></div>
         <section class="panel calendar-panel"><div class="calendar-toolbar"><button class="outline-btn" id="cal-prev">ماه قبل</button><div><h3 id="calendar-month-title">—</h3><small id="calendar-subtitle" class="muted"></small></div><div class="calendar-controls"><button class="outline-btn" id="cal-today">امروز</button><button class="outline-btn" id="cal-next">ماه بعد</button></div></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="today-dot"></i> امروز</span><span><i class="event-dot"></i> دارای یادداشت</span></div><p class="calendar-privacy">یادداشت‌ها فقط در مرورگر همین دستگاه ذخیره می‌شوند؛ اطلاعات حساس یا محل دقیق یگان را ثبت نکن.</p></section>
-        <div class="two-col calendar-lower"><section class="panel form-panel"><h3>ثبت خاطره یا یادداشت</h3><p class="muted" id="selected-date">یک روز از تقویم را انتخاب کن یا تاریخ را وارد کن.</p><label>عنوان <input id="memory-title" maxlength="70" placeholder="عنوان یادداشت"></label><label>تاریخ <input id="memory-date" type="date"></label><label>متن یادداشت <textarea id="memory-text" class="note-input" placeholder="متن خاطره یا یادداشت..."></textarea></label><button class="primary-btn" id="save-memory">ذخیره روی دستگاه</button></section><section class="panel"><h3>یادداشت‌های این ماه</h3><div id="calendar-event-list" class="memory-list"></div></section></div>
+        <div class="two-col calendar-lower"><section class="panel form-panel"><h3>ثبت خاطره یا یادداشت</h3><p class="muted" id="selected-date">یک روز از تقویم را انتخاب کن یا تاریخ را وارد کن.</p><label>عنوان <input id="memory-title" maxlength="70" placeholder="عنوان یادداشت"></label><div class="date-picker-field"><label for="memory-date-display">تاریخ یادداشت</label><input type="hidden" id="memory-date"><button type="button" class="date-picker-trigger" id="memory-date-display">انتخاب تاریخ شمسی</button><div class="jalali-picker" id="memory-date-picker" role="dialog" aria-label="انتخاب تاریخ یادداشت" hidden><div class="jalali-picker-head"><button type="button" id="memory-month-prev" aria-label="ماه قبل">‹</button><strong id="memory-month-title"></strong><button type="button" id="memory-month-next" aria-label="ماه بعد">›</button></div><div class="jalali-picker-grid" id="memory-date-grid"></div><div class="jalali-picker-foot"><button type="button" id="memory-date-today">امروز</button><button type="button" id="memory-date-close">بستن</button></div></div></div><label>متن یادداشت <textarea id="memory-text" class="note-input" placeholder="متن خاطره یا یادداشت..."></textarea></label><button class="primary-btn" id="save-memory">ذخیره روی دستگاه</button></section><section class="panel"><h3>یادداشت‌های این ماه</h3><div id="calendar-event-list" class="memory-list"></div></section></div>
       </section>
 
       <section class="page" id="page-fun">
@@ -171,7 +171,30 @@
         <div class="panel profile-panel"><span class="profile-avatar" id="profile-initial">ک</span><h2 id="profile-display-name">کاربر مهمان</h2><div class="notice"><span>ⓘ</span><p>این پروفایل فقط روی همین دستگاه ذخیره می‌شود. برای ثبت‌نام واقعی باید سرویس امن احراز هویت متصل شود؛ رمز عبور را در این نسخه وارد نکن.</p></div><div class="profile-form"><label>نام نمایشی <input id="profile-name" maxlength="40" placeholder="نام نمایشی"></label><label>نام مستعار عمومی <input id="profile-nickname" maxlength="30" placeholder="بدون اطلاعات شناسایی‌کننده"></label><label>معرفی کوتاه <textarea id="profile-bio" class="note-input" maxlength="180" placeholder="چند کلمه درباره خودت..."></textarea></label><button class="primary-btn" id="save-profile">ذخیره پروفایل</button><button class="outline-btn" data-page="auth">ورود و ثبت‌نام</button><button class="outline-btn" id="clear-local">پاک کردن داده‌های ذخیره‌شده این دستگاه</button></div></div>
       </section>
 
-      <footer class="footer">هم‌خدمت <span>·</span> نسخه آزمایشی ۳ <span>·</span> اطلاعات روزشمار تخمینی است</footer>
+      <section class="page" id="page-settings">
+  <div class="page-heading"><div><p class="eyebrow">شخصی‌سازی تجربه</p><h1>تنظیمات برنامه</h1><p class="muted">ظاهر، زبان و اعلان‌های هم‌خدمت را مدیریت کن.</p></div></div>
+  <div class="settings-grid">
+    <section class="panel settings-card"><div class="settings-title"><span class="settings-icon">◐</span><div><h3>ظاهر برنامه</h3><p class="muted">حالت نمایش را انتخاب کن.</p></div></div>
+      <label>پوسته برنامه<select id="theme-setting"><option value="system">هماهنگ با دستگاه</option><option value="light">روشن</option><option value="dark">تیره</option></select></label>
+      <div class="theme-swatches"><button type="button" data-theme-choice="light"><i class="swatch-light"></i> روشن</button><button type="button" data-theme-choice="dark"><i class="swatch-dark"></i> تیره</button><button type="button" data-theme-choice="system"><i class="swatch-system"></i> دستگاه</button></div>
+    </section>
+    <section class="panel settings-card"><div class="settings-title"><span class="settings-icon">文</span><div><h3>زبان برنامه</h3><p class="muted">زبان رابط را انتخاب کن.</p></div></div>
+      <label>زبان<select id="language-setting"><option value="fa">فارسی</option><option value="en">English</option><option value="ar">العربية</option></select></label><p class="form-hint" id="language-note">با تغییر زبان، جهت و قالب تاریخ و ساعت نیز متناسب می‌شود.</p>
+    </section>
+    <section class="panel settings-card"><div class="settings-title"><span class="settings-icon">♧</span><div><h3>اعلان‌ها</h3><p class="muted">اعلان‌های محلی و یادآوری‌ها.</p></div></div>
+      <div class="setting-row"><div><b>اجازه اعلان سیستم</b><small id="notification-status">وضعیت بررسی نشده</small></div><button class="outline-btn" id="enable-notifications">فعال‌سازی</button></div>
+      <label class="switch-row"><span><b>یادآوری روزانه</b><small>یادآوری در زمان باز بودن برنامه</small></span><input type="checkbox" id="daily-reminder"></label>
+      <label>ساعت یادآوری <input type="time" id="reminder-time" value="09:00"></label>
+      <p class="form-hint">اعلان مطمئن در زمان بسته بودن برنامه به سرویس Push و سرور نیاز دارد؛ این نسخه فقط مجوز مرورگر و یادآوری هنگام باز بودن برنامه را پشتیبانی می‌کند.</p>
+    </section>
+    <section class="panel settings-card"><div class="settings-title"><span class="settings-icon">◷</span><div><h3>تاریخ و ساعت</h3><p class="muted">نمایش زمان دستگاه و قالب منطقه‌ای.</p></div></div>
+      <div class="time-preview"><strong id="settings-date-preview">—</strong><b id="settings-time-preview">—</b></div>
+      <label class="switch-row"><span><b>نمایش ساعت در نوار بالا</b><small>نمایش زنده تاریخ و ساعت</small></span><input type="checkbox" id="show-clock" checked></label>
+    </section>
+  </div>
+  <div class="settings-actions"><button class="primary-btn" id="save-settings">ذخیره تنظیمات</button><button class="outline-btn" id="reset-settings">بازگردانی تنظیمات پیش‌فرض</button></div>
+</section>
+\n      <footer class="footer">هم‌خدمت <span>·</span> نسخه آزمایشی ۵ <span>·</span> اطلاعات روزشمار تخمینی است</footer>
     </main>
   </div>
   <nav class="mobile-nav" aria-label="منوی موبایل">
