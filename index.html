@@ -24,6 +24,7 @@
         <button class="nav-link" data-page="community"><span>◎</span> انجمن</button>
         <button class="nav-link" data-page="market"><span>▤</span> بازارچه</button>
         <button class="nav-link" data-page="chat"><span>◌</span> گفت‌وگوها</button>
+        <button class="nav-link" data-page="friends"><span>♧</span> دوستان</button>
         <button class="nav-link" data-page="calendar"><span>▦</span> تقویم و خاطرات</button>
         <button class="nav-link" data-page="fun"><span>✧</span> سرگرمی</button>
         <button class="nav-link" data-page="news"><span>▧</span> اخبار و آموزش</button>
@@ -75,7 +76,8 @@
               <button class="quick-item" data-page="community"><span class="quick-icon q-blue">◎</span><b>انجمن</b><small>گفت‌وگو و تجربه‌ها</small></button>
               <button class="quick-item" data-page="market"><span class="quick-icon q-orange">▤</span><b>بازارچه</b><small>آگهی‌های کاربران</small></button>
               <button class="quick-item" data-page="chat"><span class="quick-icon q-green">◌</span><b>گفت‌وگوها</b><small>ارتباط با دیگران</small></button>
-              <button class="quick-item" data-page="calendar"><span class="quick-icon q-purple">▦</span><b>خاطرات</b><small>ثبت روزهای مهم</small></button>
+              <button class="quick-item" data-page="calendar"><span class="quick-icon q-purple">▦</span><b>تقویم شمسی</b><small>ثبت روزهای مهم</small></button>
+              <button class="quick-item" data-page="friends"><span class="quick-icon q-green">♧</span><b>دوستان</b><small>فهرست ارتباطات</small></button>
             </div>
           </section>
           <section class="panel">
@@ -95,6 +97,7 @@
             <label>تاریخ شروع خدمت <input type="date" id="start-date"></label>
             <label>مدت خدمت (ماه) <input type="number" id="duration" min="1" max="60" placeholder="مثلاً ۲۱"></label>
             <label>عنوان روزشمار <input type="text" id="countdown-name" maxlength="40" placeholder="مثلاً روزشمار من"></label>
+            <div class="countdown-extra"><span>کل بازه تخمینی: <b id="total-days">—</b></span><span>روز سپری‌شده: <b id="elapsed-days">—</b></span></div>
             <button class="primary-btn full" id="calculate">محاسبه و ذخیره روزشمار</button>
             <p class="form-hint">مدت خدمت و تاریخ پایان ممکن است با توجه به شرایط فردی و مقررات تغییر کند. نتیجه صرفاً تخمینی است.</p>
           </section>
@@ -130,13 +133,20 @@
       </section>
 
       <section class="page" id="page-chat">
-        <div class="page-heading"><div><p class="eyebrow">ارتباط با جامعه</p><h1>گفت‌وگوها</h1><p class="muted">فضای پیام‌رسانی خصوصی و گروهی.</p></div></div>
-        <div class="empty-state panel"><div class="empty-icon">◌</div><h3>گفت‌وگوی آنلاین به‌زودی</h3><p>برای فعال شدن چت واقعی، باید سامانه حساب کاربری، سرور پیام‌رسانی و ذخیره امن پیام‌ها راه‌اندازی شود.</p><button class="outline-btn" data-page="community">رفتن به انجمن</button></div>
+        <div class="page-heading"><div><p class="eyebrow">ارتباط با جامعه</p><h1>گفت‌وگوها</h1><p class="muted">نمونه رابط پیام‌رسان؛ پیام‌ها فقط روی همین دستگاه ذخیره می‌شوند.</p></div></div>
+        <div class="notice"><span>ⓘ</span><p>این چت به کاربران دیگر ارسال نمی‌شود. برای پیام‌رسانی خصوصی واقعی باید احراز هویت، پایگاه داده و دسترسی امن تنظیم شود.</p></div>
+        <section class="panel chat-panel"><div id="chat-messages" class="chat-messages"></div><div class="chat-compose"><input id="chat-input" placeholder="پیام آزمایشی خودت را بنویس..." maxlength="1000"><button class="primary-btn" id="send-chat">ارسال</button></div></section>
+      </section>
+      <section class="page" id="page-friends">
+        <div class="page-heading"><div><p class="eyebrow">ارتباطات</p><h1>دوستان من</h1><p class="muted">فهرست آزمایشی نام‌های مستعار روی همین دستگاه.</p></div></div>
+        <div class="notice"><span>ⓘ</span><p>جست‌وجوی کاربران و درخواست دوستی بین افراد، پس از راه‌اندازی حساب‌های آنلاین فعال می‌شود.</p></div>
+        <section class="panel form-panel"><h3>افزودن به فهرست محلی</h3><label>نام مستعار <input id="friend-name" maxlength="30" placeholder="نام مستعار"></label><button class="primary-btn" id="add-friend">افزودن</button><div id="friend-list" class="friend-list"></div></section>
       </section>
 
       <section class="page" id="page-calendar">
-        <div class="page-heading"><div><p class="eyebrow">برنامه‌ریزی شخصی</p><h1>تقویم و خاطرات</h1><p class="muted">یادداشت‌ها و اتفاقات مهمت رو ثبت کن.</p></div></div>
-        <div class="panel form-panel"><h3>ثبت خاطره یا یادداشت</h3><label>عنوان <input id="memory-title" placeholder="عنوان یادداشت"></label><label>تاریخ <input id="memory-date" type="date"></label><label>متن یادداشت <textarea id="memory-text" class="note-input" placeholder="متن خاطره یا یادداشت..."></textarea></label><button class="primary-btn" id="save-memory">ذخیره روی دستگاه</button><div id="memory-list" class="memory-list"></div></div>
+        <div class="page-heading"><div><p class="eyebrow">برنامه‌ریزی شخصی</p><h1>تقویم شمسی و خاطرات</h1><p class="muted">ماه‌ها و روزها بر پایه تقویم هجری شمسی نمایش داده می‌شوند.</p></div></div>
+        <section class="panel calendar-panel"><div class="calendar-toolbar"><button class="outline-btn" id="cal-prev">ماه قبل</button><div><h3 id="calendar-month-title">—</h3><small id="calendar-subtitle" class="muted"></small></div><div class="calendar-controls"><button class="outline-btn" id="cal-today">امروز</button><button class="outline-btn" id="cal-next">ماه بعد</button></div></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="today-dot"></i> امروز</span><span><i class="event-dot"></i> دارای یادداشت</span></div></section>
+        <div class="two-col calendar-lower"><section class="panel form-panel"><h3>ثبت خاطره یا یادداشت</h3><p class="muted" id="selected-date">یک روز از تقویم را انتخاب کن یا تاریخ را وارد کن.</p><label>عنوان <input id="memory-title" maxlength="70" placeholder="عنوان یادداشت"></label><label>تاریخ <input id="memory-date" type="date"></label><label>متن یادداشت <textarea id="memory-text" class="note-input" placeholder="متن خاطره یا یادداشت..."></textarea></label><button class="primary-btn" id="save-memory">ذخیره روی دستگاه</button></section><section class="panel"><h3>یادداشت‌های این ماه</h3><div id="calendar-event-list" class="memory-list"></div></section></div>
       </section>
 
       <section class="page" id="page-fun">
@@ -150,9 +160,15 @@
         <div class="feed-list"><article class="feed-card"><span class="feed-category">راهنمای عمومی</span><h3>چک‌لیست برنامه‌ریزی شخصی</h3><p>هدف‌های کوتاه‌مدت مشخص کن، یادداشت‌ها رو مرتب نگه دار و اطلاعات مهم رو از منابع رسمی بررسی کن.</p></article><article class="feed-card"><span class="feed-category">مهارت‌آموزی</span><h3>یادگیری مهارت در زمان آزاد</h3><p>برای یادگیری، یک برنامه واقع‌بینانه و قابل پیگیری تنظیم کن.</p></article></div>
       </section>
 
+      <section class="page" id="page-auth">
+        <div class="page-heading"><div><p class="eyebrow">حساب کاربری</p><h1>ورود و ثبت‌نام</h1><p class="muted">رابط آماده‌ی اتصال به سامانه احراز هویت.</p></div></div>
+        <div class="notice"><span>ⓘ</span><p>این فرم در این نسخه نمایشی است و هنوز حسابی ایجاد یا احراز هویت نمی‌کند. لطفاً رمز واقعی خودت را وارد نکن.</p></div>
+        <div class="two-col auth-grid"><section class="panel form-panel"><h3>ساخت حساب</h3><label>نام نمایشی <input id="signup-name" maxlength="40" placeholder="نام نمایشی"></label><label>ایمیل <input id="signup-email" type="email" placeholder="name@example.com"></label><label>رمز عبور <input type="password" placeholder="پس از اتصال سرویس فعال می‌شود" disabled></label><button class="primary-btn" id="signup-demo">ثبت‌نام (غیرفعال در نسخه آزمایشی)</button></section><section class="panel form-panel"><h3>ورود به حساب</h3><label>ایمیل <input id="login-email" type="email" placeholder="name@example.com"></label><label>رمز عبور <input type="password" placeholder="پس از اتصال سرویس فعال می‌شود" disabled></label><button class="outline-btn" id="login-demo">ورود (غیرفعال در نسخه آزمایشی)</button><p class="form-hint">بازیابی رمز عبور نیز پس از اتصال سرویس امن فعال خواهد شد.</p></section></div>
+      </section>
+
       <section class="page" id="page-profile">
-        <div class="page-heading"><div><p class="eyebrow">حساب و تنظیمات</p><h1>پروفایل من</h1><p class="muted">نسخه آزمایشی بدون ثبت‌نام و حساب آنلاین.</p></div></div>
-        <div class="panel profile-panel"><span class="profile-avatar">س</span><h2>کاربر هم‌خدمت</h2><p class="muted">مهمان · اطلاعات این نسخه روی همین دستگاه نگهداری می‌شود.</p><div class="notice"><span>ⓘ</span><p>برای فعال‌سازی پروفایل عمومی، دوستان، چت و همگام‌سازی بین دستگاه‌ها، ثبت‌نام و بک‌اند لازم است.</p></div><button class="outline-btn" id="clear-local">پاک کردن داده‌های ذخیره‌شده این دستگاه</button></div>
+        <div class="page-heading"><div><p class="eyebrow">حساب و تنظیمات</p><h1>پروفایل من</h1><p class="muted">ویرایش نمایه محلی و آماده‌سازی برای حساب آنلاین.</p></div></div>
+        <div class="panel profile-panel"><span class="profile-avatar" id="profile-initial">ک</span><h2 id="profile-display-name">کاربر مهمان</h2><div class="notice"><span>ⓘ</span><p>این پروفایل فقط روی همین دستگاه ذخیره می‌شود. برای ثبت‌نام واقعی باید سرویس امن احراز هویت متصل شود؛ رمز عبور را در این نسخه وارد نکن.</p></div><div class="profile-form"><label>نام نمایشی <input id="profile-name" maxlength="40" placeholder="نام نمایشی"></label><label>نام مستعار عمومی <input id="profile-nickname" maxlength="30" placeholder="بدون اطلاعات شناسایی‌کننده"></label><label>معرفی کوتاه <textarea id="profile-bio" class="note-input" maxlength="180" placeholder="چند کلمه درباره خودت..."></textarea></label><button class="primary-btn" id="save-profile">ذخیره پروفایل</button><button class="outline-btn" data-page="auth">ورود و ثبت‌نام</button><button class="outline-btn" id="clear-local">پاک کردن داده‌های ذخیره‌شده این دستگاه</button></div></div>
       </section>
 
       <footer class="footer">هم‌خدمت <span>·</span> نسخه اولیه آزمایشی <span>·</span> اطلاعات روزشمار تخمینی است</footer>
