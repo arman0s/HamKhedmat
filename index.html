@@ -106,7 +106,7 @@
             <div class="big-number" id="countdown-number">—</div>
             <h3>روز باقی‌مانده</h3>
             <div class="bar"><span id="countdown-bar"></span></div>
-            <div class="preview-meta"><span>پیشرفت <b id="countdown-progress">۰٪</b></span><span>پایان تخمینی <b id="countdown-end">—</b></span></div>
+            <div class="preview-meta"><span>پیشرفت <b id="countdown-progress">۰٪</b></span><span>پایان تخمینی <b id="countdown-end">—</b></span></div><p class="remaining-detail" id="remaining-detail">پس از تنظیم روزشمار، جزئیات زمان باقی‌مانده اینجا نمایش داده می‌شود.</p>
             <button class="outline-btn" id="reset-countdown">پاک کردن اطلاعات روزشمار</button>
           </section>
         </div>
@@ -145,7 +145,7 @@
 
       <section class="page" id="page-calendar">
         <div class="page-heading"><div><p class="eyebrow">برنامه‌ریزی شخصی</p><h1>تقویم شمسی و خاطرات</h1><p class="muted">ماه‌ها و روزها بر پایه تقویم هجری شمسی نمایش داده می‌شوند.</p></div></div>
-        <section class="panel calendar-panel"><div class="calendar-toolbar"><button class="outline-btn" id="cal-prev">ماه قبل</button><div><h3 id="calendar-month-title">—</h3><small id="calendar-subtitle" class="muted"></small></div><div class="calendar-controls"><button class="outline-btn" id="cal-today">امروز</button><button class="outline-btn" id="cal-next">ماه بعد</button></div></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="today-dot"></i> امروز</span><span><i class="event-dot"></i> دارای یادداشت</span></div></section>
+        <section class="panel calendar-panel"><div class="calendar-toolbar"><button class="outline-btn" id="cal-prev">ماه قبل</button><div><h3 id="calendar-month-title">—</h3><small id="calendar-subtitle" class="muted"></small></div><div class="calendar-controls"><button class="outline-btn" id="cal-today">امروز</button><button class="outline-btn" id="cal-next">ماه بعد</button></div></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="today-dot"></i> امروز</span><span><i class="event-dot"></i> دارای یادداشت</span></div><p class="calendar-privacy">یادداشت‌ها فقط در مرورگر همین دستگاه ذخیره می‌شوند؛ اطلاعات حساس یا محل دقیق یگان را ثبت نکن.</p></section>
         <div class="two-col calendar-lower"><section class="panel form-panel"><h3>ثبت خاطره یا یادداشت</h3><p class="muted" id="selected-date">یک روز از تقویم را انتخاب کن یا تاریخ را وارد کن.</p><label>عنوان <input id="memory-title" maxlength="70" placeholder="عنوان یادداشت"></label><label>تاریخ <input id="memory-date" type="date"></label><label>متن یادداشت <textarea id="memory-text" class="note-input" placeholder="متن خاطره یا یادداشت..."></textarea></label><button class="primary-btn" id="save-memory">ذخیره روی دستگاه</button></section><section class="panel"><h3>یادداشت‌های این ماه</h3><div id="calendar-event-list" class="memory-list"></div></section></div>
       </section>
 
@@ -171,7 +171,7 @@
         <div class="panel profile-panel"><span class="profile-avatar" id="profile-initial">ک</span><h2 id="profile-display-name">کاربر مهمان</h2><div class="notice"><span>ⓘ</span><p>این پروفایل فقط روی همین دستگاه ذخیره می‌شود. برای ثبت‌نام واقعی باید سرویس امن احراز هویت متصل شود؛ رمز عبور را در این نسخه وارد نکن.</p></div><div class="profile-form"><label>نام نمایشی <input id="profile-name" maxlength="40" placeholder="نام نمایشی"></label><label>نام مستعار عمومی <input id="profile-nickname" maxlength="30" placeholder="بدون اطلاعات شناسایی‌کننده"></label><label>معرفی کوتاه <textarea id="profile-bio" class="note-input" maxlength="180" placeholder="چند کلمه درباره خودت..."></textarea></label><button class="primary-btn" id="save-profile">ذخیره پروفایل</button><button class="outline-btn" data-page="auth">ورود و ثبت‌نام</button><button class="outline-btn" id="clear-local">پاک کردن داده‌های ذخیره‌شده این دستگاه</button></div></div>
       </section>
 
-      <footer class="footer">هم‌خدمت <span>·</span> نسخه اولیه آزمایشی <span>·</span> اطلاعات روزشمار تخمینی است</footer>
+      <footer class="footer">هم‌خدمت <span>·</span> نسخه آزمایشی ۳ <span>·</span> اطلاعات روزشمار تخمینی است</footer>
     </main>
   </div>
   <nav class="mobile-nav" aria-label="منوی موبایل">
